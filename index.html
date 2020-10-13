@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <p>Ingresa DemoData</p>
+        <input id="demoDataTxt" type="text" />
+        <button id="saveButton" onclick="saveData()">Guardar</button>
+        <p id="result">Data guardada: </p>
+        <script>
+            let demoDataTxt = document.getElementById("demoDataTxt")
+            let resultDiv = document.getElementById("result")
+            resultDiv.innerHTML = "Data guardada: " + localStorage.getItem("iphone")
+
+            function saveData() {
+                if (typeof(Storage) !== "undefined") {
+                    localStorage.setItem("iphone", demoDataTxt.value);
+
+                    let resultFromStorage = localStorage.getItem("iphone")
+                    resultDiv.innerHTML = "Data guardada:" + resultFromStorage
+                } else {
+                    console.log("not storage");
+                }
+                demoDataTxt.value = ""
+            }
+            
+        </script>
+    </body>
+</html>
